@@ -8,10 +8,16 @@ export interface PostDetailPageProps {
 
 export default function PostDetailPage({ post }: PostDetailPageProps) {
   const router = useRouter();
+
+  if (router.isFallback) {
+    return <div className="font-bold text-center">Loading...</div>;
+  }
+
   if (!post) return null;
+
   return (
     <React.Fragment>
-      <div className="text-center font-bold mt-10">
+      <div className="text-center text-black font-bold mt-10">
         <h1>POST DETAIL PAGE</h1>
         <p>Name: {post.name}</p>
         <p>Price: {post.price}</p>
@@ -28,7 +34,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: data.map((post: any) => ({ params: { postId: post.id } })),
-    fallback: false, //true, blocking
+    fallback: true, //true, blocking
   };
 };
 export const getStaticProps: GetStaticProps<PostDetailPageProps> = async (
@@ -48,5 +54,6 @@ export const getStaticProps: GetStaticProps<PostDetailPageProps> = async (
     props: {
       post: data,
     },
+    revalidate: 5, // tính theo giây
   };
 };

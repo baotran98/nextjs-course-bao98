@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import { HomeTemplate } from "@/components/layouts";
 
 // sử dụng dynamic để ko cho render component ở phía server chỉ render ở phía client
 const Header = dynamic(() => import("@/components/common/header"), {
@@ -73,6 +73,10 @@ export default function AboutPage(props: AboutPageProps) {
     </Fragment>
   );
 }
+
+//
+AboutPage.Layout = HomeTemplate;
+
 // export async function getServerSideProps() {
 //   return {
 //     props: {},

@@ -9,26 +9,28 @@ export interface PostListPageProps {
 export default function PostListPage({ posts }: PostListPageProps) {
   return (
     <React.Fragment>
-      <h1
-        style={{
-          textAlign: "center",
-        }}
-      >
-        Post List Page
-      </h1>
-      <ul className="text-center">
-        {posts.map((item) => {
-          return (
-            <ul key={item.id}>
-              <Link href={`/posts/${item.id}`}>
-                <li className="cursor-pointer hover:text-sky-500">
-                  {item.name}
-                </li>
-              </Link>
-            </ul>
-          );
-        })}
-      </ul>
+      <div className="text-black">
+        <h1
+          style={{
+            textAlign: "center",
+          }}
+        >
+          Post List Page
+        </h1>
+        <ul className="text-center">
+          {posts.map((item) => {
+            return (
+              <ul key={item.id}>
+                <Link href={`/posts/${item.id}`}>
+                  <li className="cursor-pointer hover:text-sky-500">
+                    {item.name}
+                  </li>
+                </Link>
+              </ul>
+            );
+          })}
+        </ul>
+      </div>
     </React.Fragment>
   );
 }

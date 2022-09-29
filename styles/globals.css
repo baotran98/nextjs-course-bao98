@@ -24,7 +24,10 @@ a {
     color-scheme: dark;
   }
   body {
-    color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
     background: #eee;
   }
 }
